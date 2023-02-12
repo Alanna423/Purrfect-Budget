@@ -1,0 +1,78 @@
+html {
+  height: 100%;
+  width: 100%;
+/*   background-image: url("lake-background.jpeg");
+  background-size:cover; */
+  background-color: rgba(255,0,0,0.2);
+}
+
+header, footer {
+  padding: 5px;
+  color: white;
+  background-color: #cba3f0;
+}
+
+body {
+  padding: 0 5% 0 5%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+.navigation {
+  background-color: #cba3f0;
+}
+
+.container {
+  height:100%;
+  width: 100%;
+  background-color: white;
+}
+
+.intro {
+  background: #daaddb;
+  margin: 80px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* rounding the corners */
+  border-radius: 15px;
+}
+
+section {
+  background: #9d6f9e;
+  margin: 50px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 25px;
+}
+
+form {
+  margin: 10%;
+}
+
+.submit {
+  padding: 0 0 60px 0;
+  padding-left: 50%;
+}
