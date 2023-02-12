@@ -1,4 +1,4 @@
-<!-- analysis and results page w/prior results -->
+<!-- analysis and results page -->
 
 <!-- home page -->
 
@@ -17,43 +17,133 @@
 <body>
 
   <div id="container">
-    <!--     <a href="calculate.html" download> -->
-    <button onclick="totalSpending()">Show Results</button>
+    <br>
+    <button onclick="printStats()">
+      <h3>Click Here to View Your Final Report!</h3>
+    </button>
+    
+<!--     <button href="results.html" class="download-report" download>Download Report</button>
+    <a href="results.html" download="your_report button">Download Report</a> -->
   </div>
+  <br>
+
+
+
 
   <script>
     const results = document.querySelector('#container');
     const params = new URLSearchParams(window.location.search);
     var total = 0;
-    var earn = 0;
+    var totalSavings = 0; //the + money you earn that counts against loan
+    var totalRequiredCost = 0;
     const data = []; //stores the form data from calculate.html
-
+    var payment = 0;
+    var expenses = 0;
+    var totalAmountInterest = 0;
+    var totalAmountPaid = 0;
+    var totalLeft = 0;
 
     params.forEach((value, key) => {
-      data[data.length] = key + " " + value;
-      var object = document.createElement("p");
-      object = `${key} = ${value}`;
-      // total = total + parseInt(value);
-      results.append(object);
-      results.append(document.createElement('br'));
-      results.append(total);
-      results.append(document.createElement('br'));
+      data[data.length] = key;
+      data[data.length] = value;
     });
 
     function totalSpending() {
+      console.log(data);
       //adding up the values in the list
       for (let i = 0; i < data.length; i++) {
         const temp = data[i].split(" ");
-        const thing = parseInt(temp[1]);
+        const thing = parseFloat(temp[1]);
         total += thing;
       }
     }
-    results.append('The total spending was $', total);
+
+    function justCosts() {
+      // Gives the total amount that the student has to pay (not the loan amount they took out)
+      const loans = data.indexOf('Loanz') + 1;
+      console.log(data[loans]);
+      const tuition = data.indexOf('Tuition') + 1;
+      const housing = data.indexOf('Housing') + 1;
+      const mealPlan = data.indexOf('Transportation') + 1;
+      const grants = data.indexOf('Meal_Plan') + 1;
+      const scholarships = data.indexOf('Scholarships') + 1;
+      const groceries = data.indexOf('Groceries') + 1;
+      const transportation = data.indexOf('Transportation') + 1;
+      const entertainment = data.indexOf('Entertainment') + 1;
+      const earnings = data.indexOf('Earnings') + 1;
+
+      expenses = data[loans] * (data[tuition] + data[housing] + data[mealPlan]) - (data[grants] + data[scholarships]);
+      expenses += (data[groceries] * 52) + (data[transportation] * 52) + (data[entertainment] * 12);
+      expenses -= data[earnings] * 12;
+      console.log(expenses);
+    }
+
+
+    function monthlyPayments() {
+      const loans = data.indexOf('Loanz') + 1;
+      const loanYears = data.indexOf('Years_of_Loan') + 1;
+      const loanInterest = data.indexOf('loan-interest-rates') + 1;
+      const rate = data.indexOf('interest-rate') + 1;
+
+      var numerator = data[loans] * (rate / 12);
+      var denominator = 1 - [1 + (data[loanInterest] / 12)] ** (-12 * data[loanYears]);
+      payment = numerator / denominator;
+    }
+
+
+    function otherStats() {
+      const loans = data.indexOf('Loanz') + 1;
+      const loanYears = data.indexOf('Years_of_Loan') + 1;
+      totalAmountInterest = payment * 12 * data[loanYears];
+      totalAmountPaid = data[loans] + totalAmountInterest;
+      totalLeft = expenses - data[loans];
+    }
+
+
+    function printStats() {
+      var parent = document.getElementById("container");
+
+      totalSpending();
+      justCosts();
+      monthlyPayments();
+      otherStats();
+
+      parent.appendChild(document.createElement("br"));
+      parent.appendChild(document.createElement("br"));
+      var item = document.createElement("h3");
+      var node = document.createTextNode("The total spending was : $" + expenses + ".");
+      item.appendChild(node);
+      parent.appendChild(node);
+      parent.appendChild(document.createElement("br"));
+      parent.appendChild(document.createElement("br"));
+
+      var item2 = document.createElement("h3");
+      var node2 = document.createTextNode("Based on your loan statistics, your monthly payment is: $" + payment + ".");
+      item2.appendChild(node2);
+      parent.appendChild(node2);
+      parent.appendChild(document.createElement("br"));
+      parent.appendChild(document.createElement("br"));
+
+      var item3 = document.createElement("h3");
+      var node3 = document.createTextNode("The total amount paid was : $" + totalAmountInterest + ".");
+      item3.appendChild(node3);
+      parent.appendChild(node3);
+      parent.appendChild(document.createElement("br"));
+      parent.appendChild(document.createElement("br"));
+
+      var item4 = document.createElement("h3");
+      var node4 = document.createTextNode("The total amount you still need to pay (apart from current loan) is: $" + totalLeft + ".");
+      item4.appendChild(node4);
+      parent.appendChild(node4);
+      parent.appendChild(document.createElement("br"));
+      parent.appendChild(document.createElement("br"));
+    }
+    parent.appendChild(document.createElement("br"));
+
   </script>
 
-  <!--   <script src="results.js"></script> -->
-
   <footer>
+
     <h4>Contact Us! Or don't.</h4>
   </footer>
 </body>
