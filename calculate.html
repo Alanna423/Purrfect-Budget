@@ -6,151 +6,167 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Purrfect Budget</title>
+  <title>Calculate | Purrfect Budget</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <h1> Purrfect Budget </h1>
 </head>
 
 <body>
-  
+
   <div class="intro">
-A free budgeting website for UNC Chapel Hill students to help with your financial needs! First, we’ll ask you some questions to better know you, and what you’re aiming towards.
+    A free budgeting website for University / College students to help with your financial needs! First, we’ll ask you
+    some questions to better know you, and what you’re aiming towards.
   </div>
-    
-  <form action="/results.html">
-<!--SECTION 1: SCHOOL EXPENSES-->
-<section id="school-expenses">
-<h3 class="formSection1"> School Expenses: </h3>
-<h4 class="formQues1">
 
-<!--Input for tuition-->
-<label for="tuition"><br>How much are you spending on tuition yearly?</label><br>
-<input type="number" id="tuition" name="tuition" value= ><br>
 
-<!--Input for housing/rent-->
-<label for="house"><br>How much are you spending on housing/rent yearly?</label><br>
-<input type="number" id="house" name="house" value= ><br>
-
-<!--Input for groceries-->
-<label for="groc"><br>How much are you spending on groceries weekly?</label><br>
-<input type="number" id="groc" name="groc" value= ><br>
-
-  <!--Input for transportation-->
-<label for="transp"><br>How much are you spending on transportation weekly?</label><br>
-<input type="number" id="transp" name="transp" value= ><br>
-
-  <!--Input for meals-->
-<label for="meal"><br>How much are you spending on a meal plan yearly?</label><br>
-<input type="number" id="meal" name="meal" value= ><br>
-</h4>
-</section>
-
-<!--SECTION 2: LOANS-->
-<section id="loans">
-<h3 class="formSection">Loans: </h3>
-<h4 class="formQues">
-
-<!--Input for Undergraduate loans-->
-<label for="ugrade">How much money are you given for your direct subsidized and direct unsubsidized undergraduate loans for the year?</label><br>
-<div id="loan-question0">
-  <input type="button" value="Add Another Loan" onclick="addOption('loan-question0')"><br>
-  <input type="number" min="0" id="ugrade" name="ugrade" value= >
-</div> 
-<!--Input for Rate of Undergrad Loans-->
-<label for="rate1"><br>Please list the Annual Interest Rate:</label><br>
-<div id="loan-question1">
-  <input type="button" value="Add Another Rate" onclick="addOption('loan-question1')"><br>
-  <input type="number" min="0" max="100" step="0.01" id="rate1" name="rate1">
-</div>
-
-  <!--Input for Graduate loans-->
-<label for="graduate"><br>How much money are you given for your Direct unsubsidized graduate loans for the year?</label><br> 
-<div id="loan-question2">
-  <input type="button" value="Add Another Loan" onclick="addOption('loan-question2')"><br>
-  <input type="number" min="0" id="graduate" name="graduate" value= >
   
-<!--Input for Rate of Undergrad Loans-->
-<label for="rate2"><br>Please list the Annual Interest Rate:</label><br>
-</div>
-<div id="loan-question3">
-  <input type="button" value="Add Another Rate" onclick="addOption('loan-question3')"><br>
-  <input type="number" min="0" max="100" step="0.01" id="rate2" name="rate2">
-</div>
+  <form id="form" action="results.html" method="get">
+    
+    <!--SECTION 1: SCHOOL EXPENSES-->
+    <section id="school-expenses">
+      <h3 class="formSection1"> School Expenses: </h3>
+      <h4 class="formQues1">
 
-<!--Input for Direct PLUS Loans-->
-<label for="direct"><br>How much money are you given for your DIRECT Plus loans for this year?</label><br>
-<div id="loan-question4">
-  <input type="button" value="Add Another Loan" onclick="addOption('loan-question4')"><br>
-  <input type="number" min="0" id="direct" name="direct" value= >
-</div>
-<!--Input for Rate of Direct PLUS Loans-->    
-<label for="rate3"><br>Please list the Annual Interest Rate:</label><br>
-<div id="loan-question5">
-    <input type="button" value="Add Another Rate" onclick="addOption('loan-question5')"><br>  
-    <input type="number" min="0" max="100" step="0.01" id="rate3" name="rate3">
-</div>
-<!--Input of private Loans-->  
- <label for="private"><br>How much money are you given for private loans?</label><br>
-<div id="loan-question6">
-  <input type="button" value="Add Another Loan" onclick="addOption('loan-question6')"><br>
-  <input type="number" min="0" id="private" name="private">
-</div>
+        <!--Input for tuition-->
+        <label for="Tuition"><br>How much are you spending on tuition yearly?</label><br>
+        <input type="number" id="Tuition" name="Tuition" value=><br>
 
-<!--Input for Rate of private Loans-->
-<label for="rate"><br>Please list the Annual Interest Rate:</label><br>
-<div id="loan-question7">
-  <input type="button" value="Add Another Rate" onclick="addOption('loan-question7')"><br>
-  <input type="number" min="0" max="100" step="0.01" id="rate" name="rate">
-</div>
+        <!--Input for housing/rent-->
+        <label for="Housing"><br>How much are you spending on housing/rent yearly?</label><br>
+        <input type="number" id="Housing" name="Housing" value=><br>
 
-<!--Input for years-->
-<label for="years"><br>How many years do you want to be paying off the loan?</label><br>
-  <input type="number" min="0" id="years" name="years" value= ><br>
-</h4>
-</section>
-<!--SECTION 3 GRANTS/SCHOLARSHIPS-->
-<section id="grants-scholarships">
-  <h3 class="formSection">Grants & Scholarships: </h3>
-    <h4 class="formQues">
-<!--Input for Grants-->
-<label for="grants">How much money have you been awarded for UNC Grants?</label><br>
-  <input type="number" min="0" id="grants" name="grant" value= ><br>
-<!--Input for Scholarships-->
-<div id="scholarship-question">
-<label for="scholarships"><br>How much money are you been awarded for scholarships?</label><br>
-  <input type="button" value="Add Another Scholarship" onclick="addOption('scholarship-question')"><br>
-  <input type="number" min="0" id="scholarships" name="scholarships">
-</div>
-</h4>
-</section>
+        <!--Input for groceries-->
+        <label for="Groceries"><br>How much are you spending on groceries weekly?</label><br>
+        <input type="number" id="Groceries" name="Groceries" value=><br>
 
-<!--SECTION 4: PERSONAL EXPENSES-->
-<section id="personal-expenses">
-  <h3 class="formSection">Personal Expenses: </h3>
-    <h4 class="formQues">
-      
-<!--Input for entertainment expenses-->    
-<label for="entertain">How much do you spend monthly on entertainment/personal expenses (please provide a rough estimate)?</label>      <br>
-  <input type="number" min="0" id="entertain" name="entertain" value= >  
-    </h4>
+        <!--Input for transportation-->
+        <label for="Transportation"><br>How much are you spending on transportation weekly?</label><br>
+        <input type="number" id="Transportation" name="Transportation" value=><br>
+
+        <!--Input for meals-->
+        <label for="Meal_Plan"><br>How much are you spending on a meal plan yearly?</label><br>
+        <input type="number" id="Meal_Plan" name="Meal_Plan" value=><br>
+      </h4>
     </section>
-<!--SECTION 5: EARNINGS-->
-  <section id="earnings">
-  <h3 class="formSection">Earnings: </h3>
-  <h4 class="formQues">
-<!--Input for earnings-->
-<label for="earn">How much money do you earn each month? (About 2 paychecks if you are paid every 2 weeks)</label><br>
-  <input type="number" min="0" id="earn" name="earn" value= > 
-</h4>
-</section>
 
-<!--SECTION 6: SUBMISSION-->
-<div class="submit">
-    <input type="submit" value="Calculate">
+    
+    <!--SECTION 2: LOANS-->
+    <section id="loans">
+      <h3 class="formSection">Loans: </h3>
+      <h4 class="formQues">
+
+        <!--Input for Undergraduate loans-->
+        <label for="Undergraduate_Loan">How much money are you given for your direct subsidized and direct unsubsidized undergraduate loans for the year?</label>
+        <div id="loan-question0">
+          <input type="button" value="Add Another Loan" onclick="addOption('loan-question0')"><br>
+          <input type="number" min="0" 
+id ="Undergraduate_Loan" name="Undergraduate_Loan" value=>
+        </div>
+        <!--Input for Rate of Undergrad Loans-->
+        <label for="Undergraduate_Loan_Rate"><br>Please list the Annual Interest Rate:</label><br>
+        <div id="loan-question1">
+          <input type="button" value="Add Another Rate" onclick="addOption('loan-question1')"><br>
+          <input type="number" min="0" max="100" step="0.01" id="Undergraduate_Loan_Rate"
+            name="Undergraduate_Loan_Rate">
+        </div>
+
+        
+        <div><!--Input for Graduate loans-->
+        <label for="Graduate_Loan"><br>How much money are you given for your Direct unsubsidized graduate loans for the
+          year?</label><br>
+        <div id="loan-question2">
+          <input type="button" value="Add Another Loan" onclick="addOption('loan-question2')"><br>
+  <input type="number" min="0" id="Graduate_Loan" name="Graduate_Loan" value=>
 </div>
-</form>
-<script>
-// Functions that allows user to optionally add multiple loans)
+          <!--Input for Rate of Undergrad Loans-->
+          <label for="Graduate_Loan_Rate"><br>Please list the Annual Interest Rate:</label><br>
+        </div>
+        <div id="loan-question3">
+          <input type="button" value="Add Another Rate" onclick="addOption('loan-question3')"><br>
+          <input type="number" min="0" max="100" step="0.01" id="Graduate_Loan_Rate" name="Graduate_Loan_Rate">
+        </div>
+
+        <!--Input for Direct PLUS Loans-->
+        <label for="Direct_Plus_Loans"><br>How much money are you given for your DIRECT Plus loans for this
+          year?</label><br>
+        <div id="loan-question4">
+          <input type="button" value="Add Another Loan" onclick="addOption('loan-question4')"><br>
+          <input type="number" min="0" id="Direct_Plus_Loans" name="Direct_Plus_Loans" value=>
+        </div>
+        <!--Input for Rate of Direct PLUS Loans-->
+        <label for="Direct_Plus_Loan"><br>Please list the Annual Interest Rate:</label><br>
+        <div id="loan-question5">
+          <input type="button" value="Add Another Rate" onclick="addOption('loan-question5')"><br>
+          <input type="number" min="0" max="100" step="0.01" id="Direct_Plus_Loan" name="Direct_Plus_Loan">
+        </div>
+        <!--Input of private Loans-->
+        <label for="Private_Loan"><br>How much money are you given for private loans?</label><br>
+        <div id="loan-question6">
+          <input type="button" value="Add Another Loan" onclick="addOption('loan-question6')"><br>
+          <input type="number" min="0" id="Private_Loan" name="Private_Loan">
+        </div>
+
+        <!--Input for Rate of private Loans-->
+        <label for="Private_Loan_Rate"><br>Please list the Annual Interest Rate:</label><br>
+        <div id="loan-question7">
+          <input type="button" value="Add Another Rate" onclick="addOption('loan-question7')"><br>
+          <input type="number" min="0" max="100" step="0.01" id="Private_Loan_Rate" name="Private_Loan_Rate">
+        </div>
+
+        <!--Input for years-->
+        <label for="Years_of_Loan"><br>How many years do you want to be paying off the loan?</label><br>
+        <input type="number" min="0" id="Years_of_Loan" name="Years_of_Loan" value=><br>
+      </h4>
+    </section>
+
+    
+    <!--SECTION 3 GRANTS/SCHOLARSHIPS-->
+    <section id="grants-scholarships">
+      <h3 class="formSection">Grants & Scholarships: </h3>
+      <h4 class="formQues">
+        <!--Input for Grants-->
+        <label for="Grants">How much money have you been awarded for UNC Grants?</label><br>
+        <input type="number" min="0" id="Grants" name="Grants" value=><br>
+        <!--Input for Scholarships-->
+        <div id="scholarship-question">
+          <label for="Scholarships"><br>How much money are you been awarded for scholarships?</label><br>
+          <input type="button" value="Add Another Scholarship" onclick="addOption('scholarship-question')"><br>
+          <input type="number" min="0" id="Scholarships" name="Scholarships">
+        </div>
+      </h4>
+    </section>
+
+    
+    <!--SECTION 4: PERSONAL EXPENSES-->
+    <section id="personal-expenses">
+      <h3 class="formSection">Personal Expenses: </h3>
+      <h4 class="formQues">
+
+        <!--Input for entertainment expenses-->
+        <label for="entertain">How much do you spend monthly on entertainment/personal expenses (please provide a rough
+          estimate)?</label> <br>
+        <input type="number" min="0" id="Entertainment" name="Entertainment" value=>
+      </h4>
+    </section>
+
+    
+    <!--SECTION 5: EARNINGS-->
+    <section id="earnings">
+      <h3 class="formSection">Earnings: </h3>
+      <h4 class="formQues">
+        <!--Input for earnings-->
+        <label for="Earnings">How much money do you earn each month? (About 2 paychecks if you are paid every 2
+          weeks)</label><br>
+        <input type="number" min="0" id="Earnings" name="Earnings" value=>
+      </h4>
+    </section>
+
+    
+    <!--SECTION 6: SUBMISSION-->
+    <button type="submit">Calculate</button>
+  </form>
+  <script>
+    // Functions that allows user to optionally add multiple loans)
     function addOption(questionName) {
       var question = document.getElementById(questionName);
       question.appendChild(document.createElement("br"));
@@ -163,5 +179,8 @@ A free budgeting website for UNC Chapel Hill students to help with your financia
       question.appendChild(input);
     }
   </script>
+  <script src="script.js"></script>
+
 </body>
+
 </html>

@@ -11,18 +11,47 @@
   <title>Results | Purrfect Budget</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <!--Budget form page link-->
-  <link href="calcuate.html" rel="stylesheet" type="text/css" />
+  <link href="calculate.html" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  
-  <div class="container">
-    <a href="calculate.html" download>
+
+  <div id="container">
+    <!--     <a href="calculate.html" download> -->
+    <button onclick="totalSpending()">Show Results</button>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const results = document.querySelector('#container');
+    const params = new URLSearchParams(window.location.search);
+    var total = 0;
+    var earn = 0;
+    const data = []; //stores the form data from calculate.html
 
-  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
+
+    params.forEach((value, key) => {
+      data[data.length] = key + " " + value;
+      var object = document.createElement("p");
+      object = `${key} = ${value}`;
+      // total = total + parseInt(value);
+      results.append(object);
+      results.append(document.createElement('br'));
+      results.append(total);
+      results.append(document.createElement('br'));
+    });
+
+    function totalSpending() {
+      //adding up the values in the list
+      for (let i = 0; i < data.length; i++) {
+        const temp = data[i].split(" ");
+        const thing = parseInt(temp[1]);
+        total += thing;
+      }
+    }
+    results.append('The total spending was $', total);
+  </script>
+
+  <!--   <script src="results.js"></script> -->
 
   <footer>
     <h4>Contact Us! Or don't.</h4>

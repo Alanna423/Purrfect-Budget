@@ -1,19 +1,30 @@
-html {
-  height: 100%;
-  width: 100%;
-/*   background-image: url("lake-background.jpeg");
-  background-size:cover; */
-  background-color: rgba(255,0,0,0.2);
-}
+* {
+  font-family: Courier New;
+} 
 
-header, footer {
-  padding: 5px;
+html { 
+  background: url(background.jpg) no-repeat center center fixed;
+  background-size: cover;
+  background-size: 100% 100%;
+}
+header {
+  background-color: #daaddb;
   color: white;
-  background-color: #cba3f0;
+  padding: 5px;
+  border-radius: 15px;
+  text-align: center;
 }
 
+footer {
+  background-color: #daaddb;
+  padding: 5px;
+  border-radius: 15px;
+  flex-shrink: 0;
+  text-align: center;
+}
 body {
   padding: 0 5% 0 5%;
+  text-align: center;
 }
 
 h1 {
@@ -23,30 +34,44 @@ h1 {
 
 h2 {
   font-size: 24px;
+  text-align: center;
 }
 
 h3 {
   font-size: 20px;
+  text-align: center;
 }
 
 h4 {
   font-size: 16px;
+  text-align: center;
 }
 
 h5 {
   font-size: 14px;
+  text-align: center;
 }
 
-.navigation {
-  background-color: #cba3f0;
-}
+/*.calculate, .viewResults {
+  background: #daaddb;
+  text-align: center;
+  border-radius: 25px;
+  box-shadow: 10px 10px 20px #c87dca;
+}*/
+/* Calculate you Budget */
+<button type="Calculate Your Budget">Click Me!</button>
+button style="background: url(myimage.png)"
 
 .container {
   height:100%;
   width: 100%;
-  background-color: white;
+  text-align: center;
 }
 
+.line {
+  flex-wrap: wrap;
+}
+  
 .intro {
   background: #daaddb;
   margin: 80px;
@@ -59,13 +84,16 @@ h5 {
 }
 
 section {
-  background: #9d6f9e;
+  background: #daaddb;
   margin: 50px;
   padding-left: 12px;
   padding-right: 12px;
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 25px;
+  /* shadow */
+  box-shadow: 0px 15px 30px  #c87dca;
+  
 }
 
 form {
@@ -75,4 +103,9 @@ form {
 .submit {
   padding: 0 0 60px 0;
   padding-left: 50%;
+}
+
+button {
+  background: #daaddb;
+
 }
