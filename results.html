@@ -21,8 +21,8 @@
     <button onclick="printStats()">
       <h3>Click Here to View Your Final Report!</h3>
     </button>
-    
-<!--     <button href="results.html" class="download-report" download>Download Report</button>
+
+    <!--     <button href="results.html" class="download-report" download>Download Report</button>
     <a href="results.html" download="your_report button">Download Report</a> -->
   </div>
   <br>
@@ -41,6 +41,8 @@
     var expenses = 0;
     var totalAmountInterest = 0;
     var totalAmountPaid = 0;
+    var amountPaidBeforeLoans = 0;
+    var amountBeforeLoans = 0;
     var totalLeft = 0;
 
     params.forEach((value, key) => {
@@ -65,17 +67,18 @@
       const tuition = data.indexOf('Tuition') + 1;
       const housing = data.indexOf('Housing') + 1;
       const mealPlan = data.indexOf('Transportation') + 1;
-      const grants = data.indexOf('Meal_Plan') + 1;
+      const grants = data.indexOf('Grants') + 1;
       const scholarships = data.indexOf('Scholarships') + 1;
       const groceries = data.indexOf('Groceries') + 1;
       const transportation = data.indexOf('Transportation') + 1;
       const entertainment = data.indexOf('Entertainment') + 1;
       const earnings = data.indexOf('Earnings') + 1;
 
-      expenses = data[loans] * (data[tuition] + data[housing] + data[mealPlan]) - (data[grants] + data[scholarships]);
-      expenses += (data[groceries] * 52) + (data[transportation] * 52) + (data[entertainment] * 12);
-      expenses -= data[earnings] * 12;
-      console.log(expenses);
+      expenses = parseInt(data[tuition]) + parseInt(data[housing]) + parseInt(data[mealPlan]) + ((parseInt(data[groceries]) + parseInt(data[transportation]))*52) + (parseInt(data[entertainment])*12)
+      amountPaidBeforeLoans = (parseInt(data[grants]) + parseInt(data[scholarships]) + (parseInt(data[earnings])*12));
+      amountBeforeLoans = expenses - (parseInt(data[grants]) + parseInt(data[scholarships]) + (parseInt(data[earnings])*12));
+      if (expenses<0)
+        expenses = 0;
     }
 
 
@@ -85,8 +88,8 @@
       const loanInterest = data.indexOf('loan-interest-rates') + 1;
       const rate = data.indexOf('interest-rate') + 1;
 
-      var numerator = data[loans] * (rate / 12);
-      var denominator = 1 - [1 + (data[loanInterest] / 12)] ** (-12 * data[loanYears]);
+      var numerator = data[loans] * (data[rate] / 12);
+      var denominator = 1 - ([1 + (data[rate] / 12)] ** (-12 * data[loanYears]));
       payment = numerator / denominator;
     }
 
@@ -95,18 +98,22 @@
       const loans = data.indexOf('Loanz') + 1;
       const loanYears = data.indexOf('Years_of_Loan') + 1;
       totalAmountInterest = payment * 12 * data[loanYears];
-      totalAmountPaid = data[loans] + totalAmountInterest;
-      totalLeft = expenses - data[loans];
+      totalLeft = amountBeforeLoans - parseInt(data[loans]);
+      if (totalLeft<0)
+        totalLeft = 0;
     }
 
 
     function printStats() {
+
       var parent = document.getElementById("container");
 
       totalSpending();
       justCosts();
       monthlyPayments();
       otherStats();
+
+      console.log(amountBeforeLoans);
 
       parent.appendChild(document.createElement("br"));
       parent.appendChild(document.createElement("br"));
@@ -138,7 +145,6 @@
       parent.appendChild(document.createElement("br"));
       parent.appendChild(document.createElement("br"));
     }
-    parent.appendChild(document.createElement("br"));
 
   </script>
 
